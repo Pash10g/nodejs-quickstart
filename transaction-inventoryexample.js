@@ -30,7 +30,7 @@ async function main() {
      * Connection URI. Update <username>, <password>, and <your-cluster-url> to reflect your cluster.
      * See https://docs.mongodb.com/drivers/node/ for more details
      */
-    const uri = "mongodb+srv://<username>:<password>@<your-cluster-url>/book-store?retryWrites=true&w=majority";
+    const uri = 'mongodb+srv://admin:mongodb123@github-testing.nd8bw.mongodb.net/book-store?retryWrites=true&w=majority';
 
     /**
      * The Mongo Client you will use to interact with your database
