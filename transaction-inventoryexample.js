@@ -125,3 +125,5 @@ async function purchaseBook(client, userId, bookId, quantity, status) {
     }
 
 }
+
+module.exports = main;
