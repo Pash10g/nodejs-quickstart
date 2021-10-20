@@ -6,7 +6,7 @@ describe('Transaction Inventory test', () => {
     let db;
 
     beforeAll(async () => {
-        const uri = 'mongodb+srv://@github-testing.nd8bw.mongodb.net/book-store?retryWrites=true&w=majority';
+        const uri = 'mongodb+srv://<username>:<password>@<your-cluster-url>/book-store?retryWrites=true&w=majority';
         connection = await MongoClient.connect(uri, {
             useNewUrlParser: true,
         });
