@@ -26,12 +26,17 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-      env: 
+
+    - name: Set cluster connection
+      env:
         CLUSTER_URL: "github-testing.nd8bw.mongodb.net"
-        DBUSER : "admin"
-        DBPASSWORD : "mongodb123"
-    - run: sed  -i   "s/<your-cluster-url>/${CLUSTER_URL}/g"  *.js && sed  -i  "s/<username>/$DBUSER/g" *.js && sed  -i  "s/<password>/$DBPASSWORD/g" *.js && cat create.js
-    - run: (cd test && sed  -i   "s/<your-cluster-url>/${CLUSTER_URL}/g"  *.js && sed  -i  "s/<username>/${DBUSER}/g" *.js && sed  -i  "s/<password>/${DBPASSWORD}/g" *.js) 
+        DBUSER: "admin"
+        DBPASSWORD: "mongodb123"
+      run: find . test -maxdepth 1 -type f -name "*.js" | while read file; do
+            sed -i "s|<username>|${DBUSER}|g" $file;
+            sed -i "s|<your-cluster-url>|${CLUSTER_URL}|g" $file;
+            sed -i "s|<password>|${DBPASSWORD}|g" $file;
+        done
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
