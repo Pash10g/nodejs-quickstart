@@ -30,7 +30,7 @@ jobs:
         ATLAS_URI: ${{ secrets.CLUSTER_URL }}
         DBUSER : ${{ secrets.USERNAME }}
         DBPASSWORD : ${{ secrets.DBPASSWORD }}
-    - run: sed  -i -e *.js "s/<your-cluster-url>/$ATLAS_URI/g"  & sed  -i -e "s/<username>/$DBUSER/g" *.js & sed  -i -e "s/<password>/$DBPASSWORD/g" *.js 
+    - run: sed  -i -e  "s/<your-cluster-url>/$ATLAS_URI/g"  *.js & sed  -i -e "s/<username>/$DBUSER/g" *.js & sed  -i -e "s/<password>/$DBPASSWORD/g" *.js 
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
