@@ -27,9 +27,9 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
       env: 
-        CLUSTER_URL: ${{ secrets.CLUSTER_URL }}
-        DBUSER : ${{ secrets.USERNAME }}
-        DBPASSWORD : ${{ secrets.DBPASSWORD }}
+        CLUSTER_URL: "github-testing.nd8bw.mongodb.net"
+        DBUSER : "admin"
+        DBPASSWORD : "mongodb123"
     - run: sed  -i   "s/<your-cluster-url>/${CLUSTER_URL}/g"  *.js && sed  -i  "s/<username>/$DBUSER/g" *.js && sed  -i  "s/<password>/$DBPASSWORD/g" *.js && cat create.js
     - run: (cd test && sed  -i   "s/<your-cluster-url>/${CLUSTER_URL}/g"  *.js && sed  -i  "s/<username>/${DBUSER}/g" *.js && sed  -i  "s/<password>/${DBPASSWORD}/g" *.js) 
     - run: npm ci
