@@ -29,9 +29,9 @@ jobs:
 
     - name: Set cluster connection
       env:
-        CLUSTER_URL: "github-testing.nd8bw.mongodb.net"
-        DBUSER: "admin"
-        DBPASSWORD: "mongodb123"
+        CLUSTER_URL: ${{ secrets.CLUSTER_URL }}
+        DBUSER:  ${{ secrets.USERNAME }}
+        DBPASSWORD: ${{ secrets.DBPASSWORD }}
       run: find . test -maxdepth 1 -type f -name "*.js" | while read file; do
             sed -i "s|<username>|${DBUSER}|g" $file;
             sed -i "s|<your-cluster-url>|${CLUSTER_URL}|g" $file;
