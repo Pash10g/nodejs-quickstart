@@ -76,3 +76,5 @@ async function printCheapestSuburbs(client, country, market, maxNumberToPrint) {
         console.log(`${airbnbListing._id}: ${airbnbListing.averagePrice}`);
     });
 }
+
+module.exports = main;
