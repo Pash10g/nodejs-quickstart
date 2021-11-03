@@ -73,7 +73,7 @@ async function printCheapestSuburbs(client, country, market, maxNumberToPrint) {
     const aggCursor = client.db("sample_airbnb").collection("listingsAndReviews").aggregate(pipeline);
 
     await aggCursor.forEach(airbnbListing => {
-        console.log(`${airbnbListing._id}: ${airbnbListing.averagePrice}`);
+        //console.log(`${airbnbListing._id}: ${airbnbListing.averagePrice}`);
     });
 }
 
